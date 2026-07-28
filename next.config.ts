@@ -8,7 +8,6 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   basePath: isProd ? "/ascend-mun" : "",
-  assetPrefix: isProd ? "/ascend-mun/" : "",
 };
 
 export default nextConfig;

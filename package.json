@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "deploy": "npx next build && npx gh-pages -d out -m Deploy"
   },
   "dependencies": {
     "next": "15.1.7",
@@ -26,6 +27,7 @@
     "postcss": "^8.4.49",
     "autoprefixer": "^10.4.20",
     "eslint": "^8",
-    "eslint-config-next": "15.1.7"
+    "eslint-config-next": "15.1.7",
+    "gh-pages": "^6.3.0"
   }
 }
