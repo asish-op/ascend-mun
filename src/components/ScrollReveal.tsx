@@ -1,69 +1,43 @@
 'use client';
 
+import { useRef, useEffect, useState, ReactNode } from 'react';
 import { motion } from 'framer-motion';
-import { ReactNode } from 'react';
 
-interface ScrollRevealProps {
+interface Props {
   children: ReactNode;
-  className?: string;
+  direction?: 'up' | 'down' | 'left' | 'right';
   delay?: number;
-  direction?: 'up' | 'down' | 'left' | 'right' | 'scale' | 'none';
-  duration?: number;
+  className?: string;
 }
 
-export default function ScrollReveal({
-  children,
-  className = '',
-  delay = 0,
-  direction = 'up',
-  duration = 0.6,
-}: ScrollRevealProps) {
-  const getVariants = () => {
-    switch (direction) {
-      case 'up':
-        return {
-          hidden: { opacity: 0, y: 35 },
-          visible: { opacity: 1, y: 0 },
-        };
-      case 'down':
-        return {
-          hidden: { opacity: 0, y: -35 },
-          visible: { opacity: 1, y: 0 },
-        };
-      case 'left':
-        return {
-          hidden: { opacity: 0, x: -35 },
-          visible: { opacity: 1, x: 0 },
-        };
-      case 'right':
-        return {
-          hidden: { opacity: 0, x: 35 },
-          visible: { opacity: 1, x: 0 },
-        };
-      case 'scale':
-        return {
-          hidden: { opacity: 0, scale: 0.94 },
-          visible: { opacity: 1, scale: 1 },
-        };
-      default:
-        return {
-          hidden: { opacity: 0 },
-          visible: { opacity: 1 },
-        };
-    }
-  };
+export default function ScrollReveal({ children, direction = 'up', delay = 0, className }: Props) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setVisible(true); obs.disconnect(); } },
+      { threshold: 0.12 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
+  const initial = {
+    up:    { opacity: 0, y: 28 },
+    down:  { opacity: 0, y: -28 },
+    left:  { opacity: 0, x: 28 },
+    right: { opacity: 0, x: -28 },
+  }[direction];
 
   return (
     <motion.div
-      variants={getVariants()}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: '-50px' }}
-      transition={{
-        duration,
-        delay,
-        ease: [0.215, 0.61, 0.355, 1],
-      }}
+      ref={ref}
+      initial={initial}
+      animate={visible ? { opacity: 1, x: 0, y: 0 } : initial}
+      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay }}
       className={className}
     >
       {children}

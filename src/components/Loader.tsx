@@ -1,112 +1,106 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Loader() {
-  const [loading, setLoading] = useState(true);
-  const [progress, setProgress] = useState(0);
+  const [phase, setPhase] = useState<string>('enter');
 
   useEffect(() => {
-    // 1. Check if already loaded in this session
     try {
-      if (sessionStorage.getItem('ascend_loader_done') === 'true') {
-        setLoading(false);
+      if (sessionStorage.getItem('ascend_loaded') === '1') {
+        setPhase('done');
         return;
       }
-    } catch (e) {}
+    } catch {}
 
-    // 2. Smooth guaranteed 0 -> 100 step animation
-    let current = 0;
-    const interval = setInterval(() => {
-      current += 10;
-      if (current >= 100) {
-        current = 100;
-        setProgress(100);
-        clearInterval(interval);
-        setTimeout(() => {
-          setLoading(false);
-          try {
-            sessionStorage.setItem('ascend_loader_done', 'true');
-          } catch (e) {}
-        }, 200);
-      } else {
-        setProgress(current);
-      }
-    }, 40);
+    // Phase timeline: enter(800ms) → hold(600ms) → exit(700ms) → done
+    const t1 = setTimeout(() => setPhase('hold'), 800);
+    const t2 = setTimeout(() => setPhase('exit'), 1400);
+    const t3 = setTimeout(() => {
+      setPhase('done');
+      try { sessionStorage.setItem('ascend_loaded', '1'); } catch {}
+    }, 2100);
 
-    // 3. Fallback hard timeout - guarantees loader NEVER gets stuck
-    const fallbackTimeout = setTimeout(() => {
-      setLoading(false);
-    }, 1200);
-
-    return () => {
-      clearInterval(interval);
-      clearTimeout(fallbackTimeout);
-    };
+    return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
   }, []);
 
-  if (!loading) return null;
+  if (phase === 'done') return null;
 
   return (
     <AnimatePresence>
-      {loading && (
+      {phase !== 'done' && (
         <motion.div
+          key="loader"
           initial={{ opacity: 1 }}
-          exit={{
-            opacity: 0,
-            y: -30,
-            transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
-          }}
-          className="fixed inset-0 z-[99999] flex flex-col justify-between bg-[#050505] text-white p-8 sm:p-14 font-mono select-none"
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0, transition: { duration: 0.5, ease: 'easeInOut' } }}
+          className="fixed inset-0 z-[99999] bg-[#080808] flex flex-col items-center justify-center select-none overflow-hidden"
         >
-          {/* Background noise texture */}
-          <div className="absolute inset-0 bg-noise opacity-20 pointer-events-none" />
+          {/* Top thin line */}
+          <motion.div
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: phase === 'enter' ? 1 : 1 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            style={{ transformOrigin: 'left' }}
+            className="absolute top-0 left-0 right-0 h-[1px] bg-white/20"
+          />
 
-          {/* Top Bar */}
-          <div className="relative z-10 flex items-center justify-between text-xs tracking-widest text-neutral-400 uppercase border-b border-white/10 pb-4">
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-white animate-ping" />
-              <span className="text-white font-bold">ASCEND MUN 2026</span>
+          <div className="relative text-center px-8">
+            {/* Presented by */}
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: phase === 'enter' ? 1 : 0, y: phase === 'enter' ? 0 : -8 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="font-mono text-[11px] tracking-[0.35em] text-white/40 uppercase mb-6"
+            >
+              ARIVA PRESENTS
+            </motion.p>
+
+            {/* Main title — large serif */}
+            <div className="overflow-hidden">
+              <motion.h1
+                initial={{ y: '100%' }}
+                animate={{ y: phase === 'enter' ? '0%' : '-100%' }}
+                transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1], delay: phase === 'enter' ? 0.15 : 0 }}
+                className="font-serif text-[clamp(4rem,15vw,11rem)] font-bold text-white leading-none tracking-tight"
+                style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
+              >
+                ASCEND
+              </motion.h1>
             </div>
-            <div>
-              <span>HOSTED BY </span>
-              <span className="text-white font-bold underline">ARIVA</span>
+
+            <div className="overflow-hidden -mt-2">
+              <motion.h2
+                initial={{ y: '100%' }}
+                animate={{ y: phase === 'enter' ? '0%' : '-100%' }}
+                transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1], delay: phase === 'enter' ? 0.28 : 0.07 }}
+                className="font-serif text-[clamp(2rem,8vw,5.5rem)] font-light text-white/40 tracking-[0.3em] leading-none"
+                style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
+              >
+                MUN
+              </motion.h2>
             </div>
+
+            {/* Year & dates */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: phase === 'enter' ? 1 : 0 }}
+              transition={{ duration: 0.5, delay: 0.55 }}
+              className="mt-8 font-mono text-[10px] tracking-[0.4em] text-white/30 uppercase"
+            >
+              OCTOBER 29 — 31 · 2026
+            </motion.div>
           </div>
 
-          {/* Main Title & Counter */}
-          <div className="relative z-10 max-w-4xl mx-auto w-full my-auto space-y-8 text-center sm:text-left">
-            <div className="space-y-2">
-              <div className="text-xs text-neutral-500 uppercase tracking-widest">
-                DIPLOMATIC SIMULATION MATRIX
-              </div>
-              <h1 className="text-4xl sm:text-7xl lg:text-8xl font-extrabold uppercase tracking-tighter text-white">
-                ASCEND <span className="text-neutral-600 font-light">MUN</span>
-              </h1>
-            </div>
-
-            {/* Progress Bar */}
-            <div className="space-y-3 max-w-xl">
-              <div className="flex justify-between items-baseline text-xs text-neutral-400 uppercase tracking-widest">
-                <span>INITIALIZING SYSTEM</span>
-                <span className="text-2xl font-bold text-white tracking-tight">{progress}%</span>
-              </div>
-
-              <div className="h-1.5 w-full bg-neutral-900 rounded-full overflow-hidden border border-white/10">
-                <motion.div
-                  className="h-full bg-white shadow-[0_0_15px_rgba(255,255,255,1)]"
-                  style={{ width: `${progress}%` }}
-                />
-              </div>
-            </div>
-          </div>
-
-          {/* Bottom Bar */}
-          <div className="relative z-10 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-neutral-500 tracking-widest uppercase border-t border-white/10 pt-4">
-            <div>DIPLOMACY . INTEGRITY . INNOVATION</div>
-            <div>OCTOBER 29–31, 2026 // VENUE TBA</div>
-          </div>
+          {/* Bottom thin line */}
+          <motion.div
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            style={{ transformOrigin: 'left' }}
+            className="absolute bottom-0 left-0 right-0 h-[1px] bg-white/20"
+          />
         </motion.div>
       )}
     </AnimatePresence>
