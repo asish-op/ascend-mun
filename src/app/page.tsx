@@ -8,7 +8,6 @@ import ScrollReveal from '@/components/ScrollReveal';
 import { ArrowRight, Calendar, MapPin, Lock, ChevronRight } from 'lucide-react';
 
 const LineWaves = dynamic(() => import('@/components/LineWaves'), { ssr: false });
-const SpinningCube = dynamic(() => import('@/components/SpinningCube'), { ssr: false });
 
 const committees = [
   { code: 'UNHRC', name: 'UN Human Rights Council', category: 'General Assembly' },
@@ -64,10 +63,10 @@ export default function Home() {
           />
         </div>
 
-        {/* Hero Content Overlay (Responsive Flex Grid) */}
-        <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 lg:px-10 py-16 flex flex-col lg:flex-row items-center justify-between gap-10">
+        {/* Hero Content Overlay */}
+        <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 lg:px-10 py-16 flex items-center justify-between">
           
-          {/* Left Column: Hero Text & Actions */}
+          {/* Hero Text & Actions */}
           <div className="space-y-8 max-w-2xl">
             <div className="space-y-2 overflow-hidden">
               <motion.h1
@@ -129,15 +128,6 @@ export default function Home() {
             </motion.div>
           </div>
 
-          {/* Right Column: Spinning Metallic Cube (Medium size, right on desktop, below on mobile) */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="flex items-center justify-center shrink-0 w-full lg:w-auto"
-          >
-            <SpinningCube />
-          </motion.div>
         </div>
       </section>
 

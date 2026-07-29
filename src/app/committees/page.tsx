@@ -33,7 +33,7 @@ export default function CommitteesPage() {
       <div className="max-w-3xl space-y-6">
         <ScrollReveal direction="up">
           <p className="font-mono text-[10px] tracking-[0.4em] text-white/30 uppercase mb-4">
-            SECRETARIAT PREVIEW — 6 COUNCILS
+            SECRETARIAT PREVIEW — 7 COUNCILS
           </p>
           <span className="accent-line" />
           <h1
