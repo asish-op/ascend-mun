@@ -17,7 +17,7 @@ export default function SpinningCube() {
     let rz = 0.2;
 
     // Cube 3D vertices
-    const size = 70; // Half side length
+    const size = 90; // Half side length — slightly bigger
     const vertices: [number, number, number][] = [
       [-size, -size, -size],
       [ size, -size, -size],
@@ -48,7 +48,7 @@ export default function SpinningCube() {
 
     const resize = () => {
       const dpr = window.devicePixelRatio || 1;
-      const displayWidth = Math.min(window.innerWidth - 40, 320);
+      const displayWidth = Math.min(window.innerWidth - 40, 380);
       const displayHeight = displayWidth;
       
       canvas.width = displayWidth * dpr;
@@ -69,10 +69,10 @@ export default function SpinningCube() {
 
       ctx.clearRect(0, 0, w, h);
 
-      // Increment rotations
-      rx += 0.008;
-      ry += 0.012;
-      rz += 0.005;
+      // Increment rotations — slower, more stately
+      rx += 0.003;
+      ry += 0.005;
+      rz += 0.002;
 
       // Rotation matrices
       const cosX = Math.cos(rx), sinX = Math.sin(rx);
