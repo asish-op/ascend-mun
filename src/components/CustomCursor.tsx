@@ -27,7 +27,9 @@ export default function CustomCursor() {
 
       const target = e.target as HTMLElement | null;
       if (target) {
-        const hoverable = target.closest('a, button, input, textarea, [role="button"], [data-hover]');
+        const hoverable = target.closest(
+          'a, button, input, textarea, [role="button"], [data-hover], [draggable="true"], .draggable'
+        );
         setIsHovered(!!hoverable);
       }
     };
