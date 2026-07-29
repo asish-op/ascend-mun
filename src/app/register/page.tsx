@@ -63,7 +63,7 @@ export default function RegisterPage() {
                 { label: 'Conference', val: 'ASCEND MUN 2026' },
                 { label: 'Dates', val: 'OCTOBER 29–31, 2026' },
                 { label: 'Host', val: 'ARIVA' },
-                { label: 'Committees', val: '6 COUNCILS' },
+                { label: 'Committees', val: '7 COUNCILS' },
                 { label: 'Registration', val: 'OPENING SOON' },
               ].map(({ label, val }) => (
                 <div key={label} className="flex items-center justify-between border-b border-white/[0.05] pb-3">
