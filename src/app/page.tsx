@@ -13,7 +13,7 @@ const LineWaves = dynamic(() => import('@/components/LineWaves'), { ssr: false }
 const committees = [
   { code: 'UNHRC', name: 'UN Human Rights Council', category: 'General Assembly' },
   { code: 'DISEC', name: 'Disarmament & International Security', category: 'General Assembly' },
-  { code: 'UNSW', name: 'UN Special Committee', category: 'Specialized Agency' },
+  { code: 'UNSC', name: 'UN Security Council', category: 'Security Council' },
   { code: 'LOK SABHA', name: 'House of the People', category: 'Indian Cabinet' },
   { code: 'IP', name: 'International Press', category: 'Press Corps' },
   { code: 'IFI', name: 'International Financial Institution', category: 'Specialized Agency' },

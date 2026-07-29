@@ -10,14 +10,14 @@ import { Lock, AlertCircle, ArrowRight, ChevronRight } from 'lucide-react';
 const committees = [
   { code: 'UNHRC', name: 'United Nations Human Rights Council', desc: 'Protecting fundamental human rights globally and addressing grave violations in conflict zones.', category: 'General Assembly', num: '01' },
   { code: 'DISEC', name: 'Disarmament & International Security Committee', desc: 'Formulating multilateral policy on arms control, non-proliferation, and global security crises.', category: 'General Assembly', num: '02' },
-  { code: 'UNSW', name: 'United Nations Special Committee', desc: 'Navigating strategic international security, emergency summit protocols, and special global affairs.', category: 'Specialized Agency', num: '03' },
+  { code: 'UNSC', name: 'United Nations Security Council', desc: 'Maintaining international peace and security, addressing sovereign threats, and authorizing peace enforcement operations.', category: 'Security Council', num: '03' },
   { code: 'LOK SABHA', name: 'House of the People (Indian Cabinet)', desc: 'Debating national policy, socio-economic legislative reforms, and national security challenges.', category: 'Indian Cabinet', num: '04' },
   { code: 'IP', name: 'International Press', desc: 'Journalism, photojournalism, and reporting committee proceedings in real-time with press rigour.', category: 'Press Corps', num: '05' },
   { code: 'IFI', name: 'International Financial Institution', desc: 'Navigating macroeconomic stability, debt restructuring, and international trade policy frameworks.', category: 'Specialized Agency', num: '06' },
   { code: 'WHO', name: 'World Health Organization', desc: 'Addressing public health emergencies, pandemic preparedness, and global healthcare accessibility.', category: 'Specialized Agency', num: '07' },
 ];
 
-const categories = ['ALL', 'GENERAL ASSEMBLY', 'INDIAN CABINET', 'PRESS CORPS', 'SPECIALIZED AGENCY'];
+const categories = ['ALL', 'GENERAL ASSEMBLY', 'SECURITY COUNCIL', 'INDIAN CABINET', 'PRESS CORPS', 'SPECIALIZED AGENCY'];
 
 export default function CommitteesPage() {
   const [active, setActive] = useState('ALL');
