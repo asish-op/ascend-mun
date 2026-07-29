@@ -129,7 +129,7 @@ export default function Home() {
             </motion.div>
           </div>
 
-          {/* Right Column: Spinning Particle Globe */}
+          {/* Right Column: Spinning Particle Globe (interactive) */}
           <motion.div
             initial={{ opacity: 0, scale: 0.85 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -137,7 +137,7 @@ export default function Home() {
             className="relative flex items-center justify-center shrink-0 w-full lg:w-auto"
           >
             {/* Subtle ambient glow behind globe */}
-            <div className="absolute w-80 h-80 bg-white/[0.04] blur-3xl rounded-full pointer-events-none" />
+            <div className="absolute w-96 h-96 bg-white/[0.04] blur-3xl rounded-full pointer-events-none" />
             <SpinningGlobe />
           </motion.div>
 
