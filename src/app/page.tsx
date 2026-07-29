@@ -63,11 +63,11 @@ export default function Home() {
           />
         </div>
 
-        {/* Hero Content Overlay */}
-        <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 lg:px-10 py-16 flex items-center justify-between">
+        {/* Hero Content Overlay (Flex Grid: Left Text | Right Silhouette) */}
+        <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 lg:px-10 pt-12 pb-0 flex flex-col lg:flex-row items-center justify-between gap-10 min-h-[calc(100vh-72px)]">
           
-          {/* Hero Text & Actions */}
-          <div className="space-y-8 max-w-2xl">
+          {/* Left Column: Hero Text & Actions */}
+          <div className="space-y-8 max-w-2xl py-12">
             <div className="space-y-2 overflow-hidden">
               <motion.h1
                 initial={{ y: '110%' }}
@@ -127,6 +127,28 @@ export default function Home() {
               </div>
             </motion.div>
           </div>
+
+          {/* Right Column: Upper-half Silhouette with bottom dark fade */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.9, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
+            className="relative flex items-end justify-center lg:justify-end self-end w-full lg:w-1/2 pt-6 pointer-events-none"
+          >
+            <div className="relative max-w-md lg:max-w-lg w-full">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/hero-silhouette.png"
+                alt="Ascend MUN Leader Silhouette"
+                className="w-full h-auto object-contain max-h-[520px] lg:max-h-[640px] drop-shadow-[0_0_35px_rgba(255,255,255,0.12)]"
+                style={{
+                  maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%)',
+                  WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%)',
+                }}
+              />
+              <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-[#060606] via-[#060606]/80 to-transparent" />
+            </div>
+          </motion.div>
 
         </div>
       </section>
