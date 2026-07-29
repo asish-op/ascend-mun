@@ -63,37 +63,51 @@ export default function Home() {
           />
         </div>
 
-        {/* Hero Content Overlay */}
-        <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 lg:px-10 py-16 flex items-center justify-between">
+        {/* Hero Content Stack */}
+        <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 lg:px-10 pt-12 pb-6 flex flex-col items-center text-center space-y-6">
           
-          {/* Hero Text & Actions */}
-          <div className="space-y-8 max-w-2xl">
-            <div className="space-y-2 overflow-hidden">
-              <motion.h1
-                initial={{ y: '110%' }}
-                animate={{ y: '0%' }}
-                transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1], delay: 0.35 }}
-                className="text-[clamp(4.5rem,10vw,9.5rem)] font-bold leading-[0.9] tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-white via-slate-100 to-slate-400 drop-shadow-[0_4px_24px_rgba(255,255,255,0.2)]"
-                style={{ fontFamily: 'var(--font-playfair), serif' }}
-              >
-                ASCEND
-              </motion.h1>
-              <motion.h1
-                initial={{ y: '110%' }}
-                animate={{ y: '0%' }}
-                transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1], delay: 0.48 }}
-                className="text-[clamp(4.5rem,10vw,9.5rem)] font-bold leading-[0.9] tracking-tight text-slate-300/30"
-                style={{ fontFamily: 'var(--font-playfair), serif' }}
-              >
-                MUN
-              </motion.h1>
-            </div>
+          {/* Top: ASCEND MUN Title */}
+          <div className="space-y-1 overflow-hidden">
+            <motion.h1
+              initial={{ y: '110%' }}
+              animate={{ y: '0%' }}
+              transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1], delay: 0.35 }}
+              className="text-[clamp(3.5rem,8vw,7.5rem)] font-bold leading-[0.9] tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-white via-slate-100 to-slate-400 drop-shadow-[0_4px_24px_rgba(255,255,255,0.2)]"
+              style={{ fontFamily: 'var(--font-playfair), serif' }}
+            >
+              ASCEND MUN
+            </motion.h1>
+          </div>
 
+          {/* Middle Image blending seamlessly into black background */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.85, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="relative w-full max-w-4xl mx-auto flex justify-center my-2"
+          >
+            <div className="relative w-full overflow-hidden rounded-xl">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://i.ibb.co/7Jfn9zTL/Whats-App-Image-2026-07-29-at-1-12-30-PM.jpg"
+                alt="Ascend MUN Hero Graphic"
+                className="w-full h-auto object-cover max-h-[480px] md:max-h-[560px] shadow-2xl"
+                style={{
+                  maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 55%, rgba(0,0,0,0) 100%)',
+                  WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 55%, rgba(0,0,0,0) 100%)',
+                }}
+              />
+              <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-[#060606] via-[#060606]/80 to-transparent pointer-events-none" />
+            </div>
+          </motion.div>
+
+          {/* Under Image: Action Buttons & Details */}
+          <div className="space-y-6 flex flex-col items-center pt-2">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.85 }}
-              className="flex flex-wrap items-center gap-4"
+              className="flex flex-wrap items-center justify-center gap-4"
             >
               <Link
                 href="/register"
@@ -115,13 +129,13 @@ export default function Home() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 1 }}
-              className="flex flex-wrap gap-3 pt-2"
+              className="flex flex-wrap justify-center gap-3"
             >
-              <div className="flex items-center gap-2 px-4 py-2 border border-white/10 font-mono text-[10px] tracking-widest text-white/50 uppercase">
+              <div className="flex items-center gap-2 px-4 py-2 border border-white/10 font-mono text-[10px] tracking-widest text-white/50 uppercase bg-[#060606]/60 backdrop-blur-sm">
                 <Calendar className="w-3.5 h-3.5" />
                 OCTOBER 29–31, 2026
               </div>
-              <div className="flex items-center gap-2 px-4 py-2 border border-white/10 font-mono text-[10px] tracking-widest text-white/50 uppercase">
+              <div className="flex items-center gap-2 px-4 py-2 border border-white/10 font-mono text-[10px] tracking-widest text-white/50 uppercase bg-[#060606]/60 backdrop-blur-sm">
                 <MapPin className="w-3.5 h-3.5" />
                 VENUE TO BE REVEALED
               </div>
