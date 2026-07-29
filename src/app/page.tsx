@@ -8,6 +8,7 @@ import ScrollReveal from '@/components/ScrollReveal';
 import { ArrowRight, Calendar, MapPin, Lock, ChevronRight } from 'lucide-react';
 
 const LineWaves = dynamic(() => import('@/components/LineWaves'), { ssr: false });
+const SpinningGlobe = dynamic(() => import('@/components/SpinningGlobe'), { ssr: false });
 
 const committees = [
   { code: 'UNHRC', name: 'UN Human Rights Council', category: 'General Assembly' },
@@ -128,29 +129,16 @@ export default function Home() {
             </motion.div>
           </div>
 
-          {/* Right Column: Upper-half Silhouette with ambient backlight glow and bottom dark fade */}
+          {/* Right Column: Spinning Particle Globe */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.9, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
-            className="relative flex items-end justify-center lg:justify-end self-end w-full lg:w-1/2 pt-6 pointer-events-none"
+            initial={{ opacity: 0, scale: 0.85 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="relative flex items-center justify-center shrink-0 w-full lg:w-auto"
           >
-            <div className="relative max-w-md lg:max-w-lg w-full flex justify-center">
-              {/* Backlight Glow for edge contrast */}
-              <div className="absolute top-12 w-72 h-72 bg-white/[0.08] blur-3xl rounded-full pointer-events-none" />
-
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={process.env.NODE_ENV === 'production' ? '/ascend-mun/hero-silhouette.png' : '/hero-silhouette.png'}
-                alt="Ascend MUN Silhouette"
-                className="relative z-10 w-full h-auto object-contain max-h-[500px] lg:max-h-[620px] drop-shadow-[0_0_35px_rgba(255,255,255,0.25)]"
-                style={{
-                  maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%)',
-                  WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%)',
-                }}
-              />
-              <div className="absolute inset-x-0 bottom-0 z-20 h-44 bg-gradient-to-t from-[#060606] via-[#060606]/85 to-transparent pointer-events-none" />
-            </div>
+            {/* Subtle ambient glow behind globe */}
+            <div className="absolute w-80 h-80 bg-white/[0.04] blur-3xl rounded-full pointer-events-none" />
+            <SpinningGlobe />
           </motion.div>
 
         </div>
