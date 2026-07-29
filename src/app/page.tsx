@@ -128,25 +128,28 @@ export default function Home() {
             </motion.div>
           </div>
 
-          {/* Right Column: Upper-half Silhouette with bottom dark fade */}
+          {/* Right Column: Upper-half Silhouette with ambient backlight glow and bottom dark fade */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
+            initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.9, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
             className="relative flex items-end justify-center lg:justify-end self-end w-full lg:w-1/2 pt-6 pointer-events-none"
           >
-            <div className="relative max-w-md lg:max-w-lg w-full">
+            <div className="relative max-w-md lg:max-w-lg w-full flex justify-center">
+              {/* Backlight Glow for edge contrast */}
+              <div className="absolute top-12 w-72 h-72 bg-white/[0.08] blur-3xl rounded-full pointer-events-none" />
+
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/hero-silhouette.png"
-                alt="Ascend MUN Leader Silhouette"
-                className="w-full h-auto object-contain max-h-[520px] lg:max-h-[640px] drop-shadow-[0_0_35px_rgba(255,255,255,0.12)]"
+                src={process.env.NODE_ENV === 'production' ? '/ascend-mun/hero-silhouette.png' : '/hero-silhouette.png'}
+                alt="Ascend MUN Silhouette"
+                className="relative z-10 w-full h-auto object-contain max-h-[500px] lg:max-h-[620px] drop-shadow-[0_0_35px_rgba(255,255,255,0.25)]"
                 style={{
-                  maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%)',
-                  WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%)',
+                  maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%)',
+                  WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%)',
                 }}
               />
-              <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-[#060606] via-[#060606]/80 to-transparent" />
+              <div className="absolute inset-x-0 bottom-0 z-20 h-44 bg-gradient-to-t from-[#060606] via-[#060606]/85 to-transparent pointer-events-none" />
             </div>
           </motion.div>
 
