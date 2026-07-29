@@ -7,7 +7,9 @@ import dynamic from 'next/dynamic';
 import ScrollReveal from '@/components/ScrollReveal';
 import { ArrowRight, Calendar, MapPin, Lock, ChevronRight } from 'lucide-react';
 
-const WireGlobe = dynamic(() => import('@/components/WireGlobe'), { ssr: false });
+const LineWaves = dynamic(() => import('@/components/LineWaves'), { ssr: false });
+const FuzzyText = dynamic(() => import('@/components/FuzzyText'), { ssr: false });
+import ScrambledText from '@/components/ScrambledText';
 
 const committees = [
   { code: 'UNHRC', name: 'UN Human Rights Council', category: 'General Assembly' },
@@ -43,10 +45,27 @@ export default function Home() {
     <div className="overflow-hidden">
 
       {/* ── HERO ─────────────────────────────────── */}
-      <section className="relative min-h-[calc(100vh-72px)] grid grid-cols-1 lg:grid-cols-2 items-center max-w-[1400px] mx-auto px-6 lg:px-10 pt-16 pb-20 gap-12">
+      <section className="relative min-h-[calc(100vh-72px)] flex items-center justify-start max-w-[1400px] mx-auto px-6 lg:px-10 pt-16 pb-20 overflow-hidden">
+        
+        {/* Full-bleed interactive WebGL Waves Background */}
+        <div className="absolute inset-0 z-0 opacity-50">
+          <LineWaves
+            speed={0.25}
+            innerLineCount={36}
+            outerLineCount={42}
+            warpIntensity={0.8}
+            rotation={-45}
+            brightness={0.24}
+            color1="#ffffff"
+            color2="#cccccc"
+            color3="#666666"
+            enableMouseInteraction={true}
+            mouseInfluence={1.8}
+          />
+        </div>
 
-        {/* Left */}
-        <div className="relative z-10 space-y-8">
+        {/* Hero Content Overlay */}
+        <div className="relative z-10 space-y-8 max-w-2xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -85,7 +104,7 @@ export default function Home() {
             transition={{ duration: 0.6, delay: 0.7 }}
             className="space-y-2"
           >
-            <p className="text-white/50 text-base leading-relaxed max-w-md" style={{ fontFamily: 'var(--font-inter)' }}>
+            <p className="text-white/50 text-base leading-relaxed max-w-md animate-pulse-slow" style={{ fontFamily: 'var(--font-inter)' }}>
               Where young delegates enter the room, take a stance, negotiate under pressure, and shape decisions that feel larger than the debate floor.
             </p>
           </motion.div>
@@ -100,14 +119,14 @@ export default function Home() {
               href="/register"
               className="group flex items-center gap-2.5 px-7 py-3.5 bg-white text-black font-mono text-[11px] tracking-[0.2em] uppercase font-medium hover:bg-neutral-100 transition-colors"
             >
-              REGISTER NOW
+              <ScrambledText scrambleChars=".:*+_">REGISTER NOW</ScrambledText>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link
               href="/committees"
               className="flex items-center gap-2 font-mono text-[11px] tracking-[0.2em] uppercase text-white/50 hover:text-white transition-colors border-b border-white/20 hover:border-white pb-0.5"
             >
-              VIEW COMMITTEES
+              <ScrambledText scrambleChars=".*:">VIEW COMMITTEES</ScrambledText>
             </Link>
           </motion.div>
 
@@ -128,22 +147,6 @@ export default function Home() {
             </div>
           </motion.div>
         </div>
-
-        {/* Right — Wireframe Globe */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
-          className="relative h-[420px] lg:h-[600px] flex items-center justify-center"
-        >
-          <div className="w-full h-full opacity-80">
-            <WireGlobe />
-          </div>
-          {/* Hosted by badge */}
-          <div className="absolute bottom-8 right-0 font-mono text-[10px] tracking-[0.3em] text-white/25 uppercase">
-            HOSTED BY ARIVA
-          </div>
-        </motion.div>
       </section>
 
       {/* ── MARQUEE STRIP ───────────────────────── */}
@@ -211,7 +214,7 @@ export default function Home() {
             href="/committees"
             className="font-mono text-[10px] tracking-[0.25em] uppercase text-white/35 hover:text-white transition-colors border-b border-white/20 hover:border-white pb-0.5"
           >
-            VIEW ALL
+            <ScrambledText scrambleChars=".:">VIEW ALL</ScrambledText>
           </Link>
         </ScrollReveal>
 
@@ -224,8 +227,8 @@ export default function Home() {
                     {c.category}
                   </span>
                   <div className="flex items-center gap-1.5 font-mono text-[9px] tracking-widest text-white/25 uppercase">
-                    <Lock className="w-3 h-3" />
-                    SOON
+                    <Lock className="w-3 h-3 text-white/40" />
+                    <FuzzyText fontSize={10} fontWeight={400} fuzzRange={8} hoverIntensity={0.6} className="opacity-80">SOON</FuzzyText>
                   </div>
                 </div>
                 <div className="space-y-1 mb-8">
@@ -233,7 +236,7 @@ export default function Home() {
                     className="text-3xl font-bold text-white group-hover:text-white/90"
                     style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
                   >
-                    {c.code}
+                    <ScrambledText duration={0.8} speed={0.5} scrambleChars="!@#*">{c.code}</ScrambledText>
                   </h3>
                   <p className="font-mono text-[10px] tracking-wider text-white/35 uppercase">
                     {c.name}

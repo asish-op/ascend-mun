@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
+import ScrambledText from '@/components/ScrambledText';
 
 const navLinks = [
   { name: 'Home', href: '/' },
@@ -60,7 +61,7 @@ export default function Navbar() {
                   active ? 'text-white' : 'text-white/45 hover:text-white'
                 }`}
               >
-                {link.name}
+                <ScrambledText duration={0.6} speed={0.4} scrambleChars=".*:">{link.name}</ScrambledText>
                 {active && (
                   <motion.span
                     layoutId="nav-underline"

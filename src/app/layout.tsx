@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { Playfair_Display, DM_Mono, Inter } from 'next/font/google';
 import './globals.css';
-import DitherCanvas from '@/components/DitherCanvas';
 import CustomCursor from '@/components/CustomCursor';
 import Loader from '@/components/Loader';
 import Navbar from '@/components/Navbar';
@@ -45,7 +44,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="bg-[#080808] text-white selection:bg-white selection:text-black antialiased relative min-h-screen flex flex-col overflow-x-hidden">
         <Loader />
         <CustomCursor />
-        <DitherCanvas />
         <Navbar />
         <main className="flex-grow relative z-10 pt-[72px]">
           {children}

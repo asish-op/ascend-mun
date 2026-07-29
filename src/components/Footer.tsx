@@ -78,10 +78,32 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-white/[0.06] pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="font-mono text-[9px] tracking-[0.25em] text-white/20 uppercase">
-            &copy; {new Date().getFullYear()} Ascend MUN · Hosted by Ariva · All Rights Reserved
-          </p>
+        <div className="border-t border-white/[0.06] pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="space-y-2 text-center md:text-left">
+            <p className="font-mono text-[9px] tracking-[0.25em] text-white/20 uppercase">
+              &copy; {new Date().getFullYear()} Ascend MUN · Hosted by Ariva · All Rights Reserved
+            </p>
+            <p className="font-mono text-[9px] tracking-[0.2em] text-white/20 uppercase">
+              Powered by{' '}
+              <a
+                href="https://telugu.social"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white transition-colors underline decoration-white/10 underline-offset-2"
+              >
+                telugu.social
+              </a>{' '}
+              &amp;{' '}
+              <a
+                href="https://gatewave.one"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white transition-colors underline decoration-white/10 underline-offset-2"
+              >
+                gatewave.one
+              </a>
+            </p>
+          </div>
           <div className="flex items-center gap-8 font-mono text-[9px] tracking-[0.25em] text-white/20 uppercase">
             <span className="hover:text-white/50 cursor-pointer transition-colors">Privacy Policy</span>
             <span className="hover:text-white/50 cursor-pointer transition-colors">Terms of Conduct</span>
