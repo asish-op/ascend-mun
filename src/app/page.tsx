@@ -8,8 +8,7 @@ import ScrollReveal from '@/components/ScrollReveal';
 import { ArrowRight, Calendar, MapPin, Lock, ChevronRight } from 'lucide-react';
 
 const LineWaves = dynamic(() => import('@/components/LineWaves'), { ssr: false });
-const FuzzyText = dynamic(() => import('@/components/FuzzyText'), { ssr: false });
-import ScrambledText from '@/components/ScrambledText';
+
 
 const committees = [
   { code: 'UNHRC', name: 'UN Human Rights Council', category: 'General Assembly' },
@@ -78,7 +77,7 @@ export default function Home() {
               <span className="accent-line" />
             </motion.div>
 
-            <div className="space-y-2 overflow-hidden select-none">
+            <div className="space-y-2 overflow-hidden">
               <motion.h1
                 initial={{ y: '110%' }}
                 animate={{ y: '0%' }}
@@ -86,7 +85,7 @@ export default function Home() {
                 className="text-[clamp(4.5rem,10vw,9rem)] font-bold text-white leading-[0.9] tracking-tight"
                 style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
               >
-                <ScrambledText duration={0.8} speed={0.4} scrambleChars=".:">ASCEND</ScrambledText>
+                ASCEND
               </motion.h1>
               <motion.h1
                 initial={{ y: '110%' }}
@@ -95,7 +94,7 @@ export default function Home() {
                 className="text-[clamp(4.5rem,10vw,9rem)] font-light text-white/25 leading-[0.9] tracking-tight"
                 style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
               >
-                <ScrambledText duration={0.8} speed={0.4} scrambleChars=".:">MUN</ScrambledText>
+                MUN
               </motion.h1>
             </div>
 
@@ -118,16 +117,16 @@ export default function Home() {
             >
               <Link
                 href="/register"
-                className="group flex items-center gap-2.5 px-7 py-3.5 bg-white text-black font-mono text-[11px] tracking-[0.2em] uppercase font-medium hover:bg-neutral-100 transition-colors"
+                className="btn-primary group flex items-center gap-2.5 px-7 py-3.5"
               >
-                <ScrambledText scrambleChars=".:*+_">REGISTER NOW</ScrambledText>
+                REGISTER NOW
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
                 href="/committees"
-                className="flex items-center gap-2 font-mono text-[11px] tracking-[0.2em] uppercase text-white/50 hover:text-white transition-colors border-b border-white/20 hover:border-white pb-0.5"
+                className="btn-ghost flex items-center gap-2 font-mono text-[11px] tracking-[0.2em] uppercase pb-0.5"
               >
-                <ScrambledText scrambleChars=".*:">VIEW COMMITTEES</ScrambledText>
+                VIEW COMMITTEES
               </Link>
             </motion.div>
 
@@ -214,39 +213,39 @@ export default function Home() {
           </div>
           <Link
             href="/committees"
-            className="font-mono text-[10px] tracking-[0.25em] uppercase text-white/35 hover:text-white transition-colors border-b border-white/20 hover:border-white pb-0.5"
+            className="btn-ghost font-mono text-[10px] tracking-[0.25em] uppercase text-white/35"
           >
-            <ScrambledText scrambleChars=".:">VIEW ALL</ScrambledText>
+            VIEW ALL
           </Link>
         </ScrollReveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/[0.05]">
           {committees.map((c, i) => (
             <ScrollReveal key={c.code} direction="up" delay={i * 0.07}>
-              <div className="bg-[#080808] p-8 group hover:bg-[#0f0f0f] transition-colors h-full">
+              <div className="card-hover bg-[#080808] p-8 h-full">
                 <div className="flex items-start justify-between mb-6">
                   <span className="font-mono text-[9px] tracking-[0.3em] text-white/25 uppercase">
                     {c.category}
                   </span>
                   <div className="flex items-center gap-1.5 font-mono text-[9px] tracking-widest text-white/25 uppercase">
-                    <Lock className="w-3 h-3 text-white/40" />
-                    <FuzzyText fontSize={10} fontWeight={400} fuzzRange={8} hoverIntensity={0.6} className="opacity-80">SOON</FuzzyText>
+                    <Lock className="w-3 h-3 text-white/30" />
+                    SOON
                   </div>
                 </div>
                 <div className="space-y-1 mb-8">
                   <h3
-                    className="text-3xl font-bold text-white group-hover:text-white/90"
+                    className="text-3xl font-bold text-white transition-colors duration-300"
                     style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
                   >
-                    <ScrambledText duration={0.8} speed={0.5} scrambleChars="!@#*">{c.code}</ScrambledText>
+                    {c.code}
                   </h3>
                   <p className="font-mono text-[10px] tracking-wider text-white/35 uppercase">
                     {c.name}
                   </p>
                 </div>
-                <div className="flex items-center gap-2 font-mono text-[9px] tracking-widest text-white/20 uppercase group-hover:text-white/40 transition-colors">
+                <div className="flex items-center gap-2 font-mono text-[9px] tracking-widest text-white/20 uppercase card-arrow-group">
                   <span>AGENDA CLASSIFIED</span>
-                  <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  <ChevronRight className="w-3.5 h-3.5 card-arrow" />
                 </div>
               </div>
             </ScrollReveal>

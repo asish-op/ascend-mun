@@ -5,7 +5,7 @@ import ScrollReveal from '@/components/ScrollReveal';
 import Link from 'next/link';
 import { Lock, AlertCircle, ArrowRight, ChevronRight } from 'lucide-react';
 
-import ScrambledText from '@/components/ScrambledText';
+
 
 const committees = [
   { code: 'UNHRC', name: 'United Nations Human Rights Council', desc: 'Protecting fundamental human rights globally and addressing grave violations in conflict zones.', category: 'General Assembly', num: '01' },
@@ -39,8 +39,8 @@ export default function CommitteesPage() {
             className="text-5xl md:text-7xl font-bold text-white leading-tight"
             style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
           >
-            <ScrambledText scrambleChars=".:">Committees</ScrambledText><br />
-            <ScrambledText scrambleChars=".:">of Ascend MUN.</ScrambledText>
+            Committees<br />
+            of Ascend MUN.
           </h1>
         </ScrollReveal>
         <ScrollReveal direction="up" delay={0.1}>
@@ -92,7 +92,7 @@ export default function CommitteesPage() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/[0.05]">
         {filtered.map((c, i) => (
           <ScrollReveal key={c.code} direction="up" delay={i * 0.07}>
-            <div className="bg-[#080808] p-8 h-full flex flex-col justify-between group hover:bg-[#0e0e0e] transition-colors">
+            <div className="card-hover bg-[#080808] p-8 h-full flex flex-col justify-between">
               <div>
                 <div className="flex items-start justify-between mb-8">
                   <span className="font-mono text-[9px] tracking-[0.3em] text-white/20 uppercase">{c.num}</span>

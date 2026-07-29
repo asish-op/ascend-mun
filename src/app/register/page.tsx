@@ -3,7 +3,7 @@
 import ScrollReveal from '@/components/ScrollReveal';
 import { Lock, ArrowUpRight, CalendarClock } from 'lucide-react';
 
-import ScrambledText from '@/components/ScrambledText';
+
 
 const timeline = [
   { phase: 'Phase 1', title: 'Registration Opens', desc: 'Delegate registration portal goes live. Submit preferred committee matrix.', status: 'soon' },
@@ -28,8 +28,8 @@ export default function RegisterPage() {
             className="text-5xl md:text-7xl font-bold text-white leading-tight"
             style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
           >
-            <ScrambledText scrambleChars=".:">Registrations</ScrambledText><br />
-            <ScrambledText scrambleChars=".:">Opening Soon.</ScrambledText>
+            Registrations<br />
+            Opening Soon.
           </h1>
         </ScrollReveal>
         <ScrollReveal direction="up" delay={0.1}>
@@ -42,7 +42,7 @@ export default function RegisterPage() {
       {/* Status card */}
       <ScrollReveal direction="up">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-px bg-white/[0.05]">
-          <div className="bg-[#080808] p-12 flex flex-col justify-between space-y-8">
+          <div className="card-hover bg-[#080808] p-12 flex flex-col justify-between space-y-8">
             <div className="space-y-5">
               <div className="flex items-center gap-3">
                 <div className="w-2 h-2 rounded-full bg-white/40 animate-pulse" />
@@ -74,7 +74,7 @@ export default function RegisterPage() {
             </div>
           </div>
 
-          <div className="bg-[#0a0a0a] p-12 flex flex-col items-center justify-center text-center space-y-6">
+          <div className="card-hover bg-[#0a0a0a] p-12 flex flex-col items-center justify-center text-center space-y-6">
             <div className="w-20 h-20 border border-white/10 rounded-full flex items-center justify-center">
               <Lock className="w-8 h-8 text-white/25" />
             </div>
@@ -91,7 +91,7 @@ export default function RegisterPage() {
             </div>
             <a
               href="mailto:contact@ariva-ascend.org"
-              className="group flex items-center gap-2 font-mono text-[10px] tracking-[0.25em] uppercase text-white/30 hover:text-white border-b border-white/10 hover:border-white pb-0.5 transition-all"
+              className="btn-ghost group flex items-center gap-2 pb-0.5"
             >
               CONTACT SECRETARIAT
               <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />

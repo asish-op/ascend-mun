@@ -1,13 +1,14 @@
 import type { Metadata } from 'next';
-import { Playfair_Display, DM_Mono, Inter } from 'next/font/google';
+import { Cormorant_Garamond, DM_Mono, Outfit } from 'next/font/google';
 import './globals.css';
 import CustomCursor from '@/components/CustomCursor';
 import Loader from '@/components/Loader';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
-const playfair = Playfair_Display({
+const playfair = Cormorant_Garamond({
   subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
   variable: '--font-playfair',
   display: 'swap',
 });
@@ -19,7 +20,7 @@ const dmMono = DM_Mono({
   display: 'swap',
 });
 
-const inter = Inter({
+const inter = Outfit({
   subsets: ['latin'],
   variable: '--font-inter',
   display: 'swap',

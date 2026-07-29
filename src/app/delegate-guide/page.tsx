@@ -4,7 +4,7 @@ import ScrollReveal from '@/components/ScrollReveal';
 import Link from 'next/link';
 import { ArrowRight, Download } from 'lucide-react';
 
-import ScrambledText from '@/components/ScrambledText';
+
 
 const sections = [
   {
@@ -64,8 +64,8 @@ export default function DelegateGuidePage() {
             className="text-5xl md:text-7xl font-bold text-white leading-tight"
             style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
           >
-            <ScrambledText scrambleChars=".:">Delegate Guide</ScrambledText><br />
-            <ScrambledText scrambleChars=".:">&amp; Protocols.</ScrambledText>
+            Delegate Guide<br />
+            &amp; Protocols.
           </h1>
         </ScrollReveal>
         <ScrollReveal direction="up" delay={0.1}>
@@ -79,7 +79,7 @@ export default function DelegateGuidePage() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/[0.05]">
         {sections.map((s, i) => (
           <ScrollReveal key={s.num} direction="up" delay={i * 0.1}>
-            <div className="bg-[#080808] p-10 h-full hover:bg-[#0c0c0c] transition-colors space-y-6">
+            <div className="card-hover bg-[#080808] p-10 h-full space-y-6">
               <div className="flex items-start justify-between">
                 <span className="font-mono text-[9px] tracking-[0.35em] text-white/20 uppercase">{s.num}</span>
               </div>

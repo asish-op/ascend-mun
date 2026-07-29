@@ -14,13 +14,13 @@ export default function Loader() {
       }
     } catch {}
 
-    // Phase timeline: enter(800ms) → hold(600ms) → exit(700ms) → done
+    // Phase timeline: enter(800ms) → hold(2600ms) → exit(700ms) → done
     const t1 = setTimeout(() => setPhase('hold'), 800);
-    const t2 = setTimeout(() => setPhase('exit'), 1400);
+    const t2 = setTimeout(() => setPhase('exit'), 3400);
     const t3 = setTimeout(() => {
       setPhase('done');
       try { sessionStorage.setItem('ascend_loaded', '1'); } catch {}
-    }, 2100);
+    }, 4100);
 
     return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
   }, []);

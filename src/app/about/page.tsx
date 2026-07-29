@@ -3,7 +3,7 @@
 import ScrollReveal from '@/components/ScrollReveal';
 import Link from 'next/link';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
-import ScrambledText from '@/components/ScrambledText';
+
 
 export default function AboutPage() {
   return (
@@ -20,8 +20,8 @@ export default function AboutPage() {
             className="text-5xl md:text-7xl font-bold text-white leading-tight"
             style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
           >
-            <ScrambledText scrambleChars=".:">The vision</ScrambledText><br />
-            <ScrambledText scrambleChars=".:">behind Ascend.</ScrambledText>
+            The vision<br />
+            behind Ascend.
           </h1>
         </ScrollReveal>
         <ScrollReveal direction="up" delay={0.1}>
