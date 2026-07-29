@@ -282,9 +282,9 @@ export default function Home() {
 
           <ScrollReveal direction="up" delay={0.15} className="grid grid-cols-2 gap-6">
             {[
-              { n: '6', label: 'Committees' },
+              { n: '7', label: 'Committees' },
               { n: '3', label: 'Days of Debate' },
-              { n: '300+', label: 'Delegates' },
+              { n: '250+', label: 'Delegates' },
               { n: '1', label: 'Vision (Ariva)' },
             ].map(({ n, label }) => (
               <div key={label} className="border border-white/[0.06] p-6">
