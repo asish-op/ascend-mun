@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowUpRight } from 'lucide-react';
 
 export default function Footer() {
@@ -74,6 +75,26 @@ export default function Footer() {
             <p className="text-white/20 text-xs leading-relaxed max-w-xs" style={{ fontFamily: 'var(--font-inter)' }}>
               Registrations, delegate handbooks, and committee background guides will be published ahead of October 29–31.
             </p>
+          </div>
+        </div>
+
+        {/* Logo Banner — Full Width Above Bottom Bar */}
+        <div className="relative border-t border-white/[0.04] pt-12 pb-10 overflow-hidden flex items-center justify-center">
+          {/* Ambient silver glow behind logo */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <div className="w-[400px] h-[120px] bg-white/[0.03] blur-3xl rounded-full" />
+          </div>
+          {/* Top edge shimmer */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+          {/* The Logo */}
+          <div className="relative group cursor-default">
+            <div className="absolute -inset-4 bg-gradient-to-b from-white/[0.03] to-transparent rounded-xl blur-md opacity-0 group-hover:opacity-100 transition-all duration-700" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://i.ibb.co/0j33SHKj/ascend-mun-logo.png"
+              alt="Ascend MUN Official Logo"
+              className="relative z-10 h-20 md:h-28 w-auto object-contain opacity-60 group-hover:opacity-90 transition-all duration-700 drop-shadow-[0_4px_16px_rgba(255,255,255,0.15)] group-hover:drop-shadow-[0_8px_32px_rgba(255,255,255,0.3)] group-hover:scale-105 transform"
+            />
           </div>
         </div>
 

@@ -8,7 +8,7 @@ import ScrollReveal from '@/components/ScrollReveal';
 import { ArrowRight, Calendar, MapPin, Lock, ChevronRight } from 'lucide-react';
 
 const LineWaves = dynamic(() => import('@/components/LineWaves'), { ssr: false });
-
+const SpinningCube = dynamic(() => import('@/components/SpinningCube'), { ssr: false });
 
 const committees = [
   { code: 'UNHRC', name: 'UN Human Rights Council', category: 'General Assembly' },
@@ -64,8 +64,10 @@ export default function Home() {
           />
         </div>
 
-        {/* Hero Content Overlay (Aligned with standard layout grid) */}
-        <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 lg:px-10 py-20 flex items-center justify-start">
+        {/* Hero Content Overlay (Responsive Flex Grid) */}
+        <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 lg:px-10 py-16 flex flex-col lg:flex-row items-center justify-between gap-10">
+          
+          {/* Left Column: Hero Text & Actions */}
           <div className="space-y-8 max-w-2xl">
             <div className="space-y-2 overflow-hidden">
               <motion.h1
@@ -109,25 +111,35 @@ export default function Home() {
               </Link>
             </motion.div>
 
-          {/* Date / Venue pills */}
+            {/* Date / Venue pills */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 1 }}
+              className="flex flex-wrap gap-3 pt-2"
+            >
+              <div className="flex items-center gap-2 px-4 py-2 border border-white/10 font-mono text-[10px] tracking-widest text-white/50 uppercase">
+                <Calendar className="w-3.5 h-3.5" />
+                OCTOBER 29–31, 2026
+              </div>
+              <div className="flex items-center gap-2 px-4 py-2 border border-white/10 font-mono text-[10px] tracking-widest text-white/50 uppercase">
+                <MapPin className="w-3.5 h-3.5" />
+                VENUE TO BE REVEALED
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Right Column: Spinning Metallic Cube (Medium size, right on desktop, below on mobile) */}
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 1 }}
-            className="flex flex-wrap gap-3 pt-2"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="flex items-center justify-center shrink-0 w-full lg:w-auto"
           >
-            <div className="flex items-center gap-2 px-4 py-2 border border-white/10 font-mono text-[10px] tracking-widest text-white/50 uppercase">
-              <Calendar className="w-3.5 h-3.5" />
-              OCTOBER 29–31, 2026
-            </div>
-            <div className="flex items-center gap-2 px-4 py-2 border border-white/10 font-mono text-[10px] tracking-widest text-white/50 uppercase">
-              <MapPin className="w-3.5 h-3.5" />
-              VENUE TO BE REVEALED
-            </div>
+            <SpinningCube />
           </motion.div>
         </div>
-      </div>
-    </section>
+      </section>
 
       {/* ── MARQUEE STRIP ───────────────────────── */}
       <div className="border-y border-white/[0.06] py-3.5 overflow-hidden bg-[#060606]">
