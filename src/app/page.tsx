@@ -13,6 +13,7 @@ const LineWaves = dynamic(() => import('@/components/LineWaves'), { ssr: false }
 const committees = [
   { code: 'UNHRC', name: 'UN Human Rights Council', category: 'General Assembly' },
   { code: 'DISEC', name: 'Disarmament & International Security', category: 'General Assembly' },
+  { code: 'UNSW', name: 'UN Special Committee', category: 'Specialized Agency' },
   { code: 'LOK SABHA', name: 'House of the People', category: 'Indian Cabinet' },
   { code: 'IP', name: 'International Press', category: 'Press Corps' },
   { code: 'IFI', name: 'International Financial Institution', category: 'Specialized Agency' },
@@ -66,24 +67,13 @@ export default function Home() {
         {/* Hero Content Overlay (Aligned with standard layout grid) */}
         <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 lg:px-10 py-20 flex items-center justify-start">
           <div className="space-y-8 max-w-2xl">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              <p className="font-mono text-[10px] tracking-[0.4em] text-white/35 uppercase mb-6">
-                CLASSIFIED DIPLOMATIC BRIEF&nbsp;&nbsp;/&nbsp;&nbsp;CHAPTER 1&nbsp;&nbsp;/&nbsp;&nbsp;VENUE TBA&nbsp;&nbsp;/&nbsp;&nbsp;OCT 29–31, 2026
-              </p>
-              <span className="accent-line" />
-            </motion.div>
-
             <div className="space-y-2 overflow-hidden">
               <motion.h1
                 initial={{ y: '110%' }}
                 animate={{ y: '0%' }}
                 transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1], delay: 0.35 }}
-                className="text-[clamp(4.5rem,10vw,9rem)] font-bold text-white leading-[0.9] tracking-tight"
-                style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
+                className="text-[clamp(4.5rem,10vw,9.5rem)] font-bold leading-[0.9] tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-white via-slate-100 to-slate-400 drop-shadow-[0_4px_24px_rgba(255,255,255,0.2)]"
+                style={{ fontFamily: 'var(--font-playfair), serif' }}
               >
                 ASCEND
               </motion.h1>
@@ -91,23 +81,12 @@ export default function Home() {
                 initial={{ y: '110%' }}
                 animate={{ y: '0%' }}
                 transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1], delay: 0.48 }}
-                className="text-[clamp(4.5rem,10vw,9rem)] font-light text-white/25 leading-[0.9] tracking-tight"
-                style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
+                className="text-[clamp(4.5rem,10vw,9.5rem)] font-bold leading-[0.9] tracking-tight text-slate-300/30"
+                style={{ fontFamily: 'var(--font-playfair), serif' }}
               >
                 MUN
               </motion.h1>
             </div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.7 }}
-              className="space-y-2"
-            >
-              <p className="text-white/50 text-base leading-relaxed max-w-md animate-pulse-slow" style={{ fontFamily: 'var(--font-inter)' }}>
-                Where young delegates enter the room, take a stance, negotiate under pressure, and shape decisions that feel larger than the debate floor.
-              </p>
-            </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}

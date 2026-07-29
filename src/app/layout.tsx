@@ -1,14 +1,14 @@
 import type { Metadata } from 'next';
-import { Cormorant_Garamond, DM_Mono, Outfit } from 'next/font/google';
+import { Cinzel_Decorative, DM_Mono, Outfit } from 'next/font/google';
 import './globals.css';
 import CustomCursor from '@/components/CustomCursor';
 import Loader from '@/components/Loader';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
-const playfair = Cormorant_Garamond({
+const playfair = Cinzel_Decorative({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
+  weight: ['400', '700', '900'],
   variable: '--font-playfair',
   display: 'swap',
 });
