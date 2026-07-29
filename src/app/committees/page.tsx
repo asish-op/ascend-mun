@@ -5,6 +5,8 @@ import ScrollReveal from '@/components/ScrollReveal';
 import Link from 'next/link';
 import { Lock, AlertCircle, ArrowRight, ChevronRight } from 'lucide-react';
 
+import ScrambledText from '@/components/ScrambledText';
+
 const committees = [
   { code: 'UNHRC', name: 'United Nations Human Rights Council', desc: 'Protecting fundamental human rights globally and addressing grave violations in conflict zones.', category: 'General Assembly', num: '01' },
   { code: 'DISEC', name: 'Disarmament & International Security Committee', desc: 'Formulating multilateral policy on arms control, non-proliferation, and global security crises.', category: 'General Assembly', num: '02' },
@@ -37,7 +39,8 @@ export default function CommitteesPage() {
             className="text-5xl md:text-7xl font-bold text-white leading-tight"
             style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
           >
-            Committees<br />of Ascend MUN.
+            <ScrambledText scrambleChars=".:">Committees</ScrambledText><br />
+            <ScrambledText scrambleChars=".:">of Ascend MUN.</ScrambledText>
           </h1>
         </ScrollReveal>
         <ScrollReveal direction="up" delay={0.1}>

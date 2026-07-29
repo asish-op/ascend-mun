@@ -61,7 +61,7 @@ export default function Navbar() {
                   active ? 'text-white' : 'text-white/45 hover:text-white'
                 }`}
               >
-                <ScrambledText duration={0.6} speed={0.4} scrambleChars=".*:">{link.name}</ScrambledText>
+                {link.name}
                 {active && (
                   <motion.span
                     layoutId="nav-underline"

@@ -3,6 +3,8 @@
 import ScrollReveal from '@/components/ScrollReveal';
 import { Lock, ArrowUpRight, CalendarClock } from 'lucide-react';
 
+import ScrambledText from '@/components/ScrambledText';
+
 const timeline = [
   { phase: 'Phase 1', title: 'Registration Opens', desc: 'Delegate registration portal goes live. Submit preferred committee matrix.', status: 'soon' },
   { phase: 'Phase 2', title: 'Matrix Allotment', desc: 'Secretariat confirms delegate placements and committee assignments.', status: 'soon' },
@@ -26,7 +28,8 @@ export default function RegisterPage() {
             className="text-5xl md:text-7xl font-bold text-white leading-tight"
             style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
           >
-            Registrations<br />Opening Soon.
+            <ScrambledText scrambleChars=".:">Registrations</ScrambledText><br />
+            <ScrambledText scrambleChars=".:">Opening Soon.</ScrambledText>
           </h1>
         </ScrollReveal>
         <ScrollReveal direction="up" delay={0.1}>

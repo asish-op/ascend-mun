@@ -2,6 +2,7 @@
 
 import ScrollReveal from '@/components/ScrollReveal';
 import { Mail, Instagram, ArrowUpRight } from 'lucide-react';
+import ScrambledText from '@/components/ScrambledText';
 
 export default function ContactPage() {
   return (
@@ -18,7 +19,8 @@ export default function ContactPage() {
             className="text-5xl md:text-7xl font-bold text-white leading-tight"
             style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
           >
-            Contact the<br />Secretariat.
+            <ScrambledText scrambleChars=".:">Contact the</ScrambledText><br />
+            <ScrambledText scrambleChars=".:">Secretariat.</ScrambledText>
           </h1>
         </ScrollReveal>
         <ScrollReveal direction="up" delay={0.1}>

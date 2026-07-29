@@ -4,6 +4,8 @@ import ScrollReveal from '@/components/ScrollReveal';
 import Link from 'next/link';
 import { ArrowRight, Download } from 'lucide-react';
 
+import ScrambledText from '@/components/ScrambledText';
+
 const sections = [
   {
     num: '01',
@@ -62,7 +64,8 @@ export default function DelegateGuidePage() {
             className="text-5xl md:text-7xl font-bold text-white leading-tight"
             style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
           >
-            Delegate Guide<br />&amp; Protocols.
+            <ScrambledText scrambleChars=".:">Delegate Guide</ScrambledText><br />
+            <ScrambledText scrambleChars=".:">&amp; Protocols.</ScrambledText>
           </h1>
         </ScrollReveal>
         <ScrollReveal direction="up" delay={0.1}>
