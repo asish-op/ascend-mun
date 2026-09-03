@@ -6,18 +6,18 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "deploy": "npx next build && npx gh-pages -d out -m Deploy"
+    "lint": "eslint .",
+    "deploy": "npm run build && npx gh-pages -d out -m Deploy"
   },
   "dependencies": {
     "clsx": "^2.1.1",
-    "framer-motion": "^12.4.7",
-    "lucide-react": "^0.475.0",
-    "next": "15.1.7",
+    "framer-motion": "^13.1.1",
+    "lucide-react": "^1.27.0",
+    "next": "^16.3.4",
     "ogl": "^1.0.11",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "tailwind-merge": "^3.0.1"
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "tailwind-merge": "^3.6.0"
   },
   "devDependencies": {
     "@types/node": "^20",
@@ -25,10 +25,10 @@
     "@types/react-dom": "^19",
     "autoprefixer": "^10.4.20",
     "eslint": "^8",
-    "eslint-config-next": "15.1.7",
+    "eslint-config-next": "^16.3.4",
     "gh-pages": "^6.3.0",
     "postcss": "^8.4.49",
-    "tailwindcss": "^3.4.17",
-    "typescript": "^5"
+    "tailwindcss": "^4.3.3",
+    "typescript": "^7.0.2"
   }
 }
