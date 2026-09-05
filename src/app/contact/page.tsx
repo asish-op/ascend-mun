@@ -1,7 +1,8 @@
 'use client';
 
 import ScrollReveal from '@/components/ScrollReveal';
-import { Mail, Instagram, ArrowUpRight } from 'lucide-react';
+import InstagramIcon from '@/components/InstagramIcon';
+import { Mail, ArrowUpRight } from 'lucide-react';
 
 export default function ContactPage() {
   return (
@@ -40,7 +41,7 @@ export default function ContactPage() {
             href: 'mailto:contact@ariva-ascend.org',
           },
           {
-            icon: Instagram,
+            icon: InstagramIcon,
             label: 'SOCIAL MEDIA',
             title: 'Follow Ariva',
             value: '@ariva.official',
